@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%  static  'index.css'  %}">
+    <title>Home</title>
+</head>
+<body>
+    <section>
+    <!-- title of text-to-html -->
+    <section   >
+        <div class="Page-title"> 
+             <h1 class="heading">TXT-2-HTML</h1>
+        </div>
+        <p class="head text " >Hey here we convert your Text into standard HTML code .</p>
+        <p class="text">Choose your docx file below and submit  , the converted HTML form will be shown below . </p>
+        <p class="text">Remember to avoid any images in the text for now we will let you know once the things are updated </p>
+        
+      
+    </section>
+    <!-- Input docx file section -->
+   <section>
+    <h3>Upload your files here </h3>
+    <form method="POST" class="post-form" enctype="multipart/form-data" action="Convert">  
+        {% csrf_token %}  
+        <label for=""></label>
+        <input type="file" accept="docx" name="inpfile">
+        <button type="submit">Upload !</button> 
+    </form>
+
+   </section> 
+
+
+   <!-- output html code display  section  -->
+   <section>
+    <h2>Here is the text converted to HTML </h2>
+    <div class="output-area">
+        <code>
+            {{output}}
+        </code>
+    </div>
+    <a href="/Copy"><button>Copy </button></a>
+    <a href="/Download" download><button>Download </button></a>
+   </section>
+</section>
+{{alert}}
+</body>
+</html>
